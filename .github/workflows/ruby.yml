@@ -30,14 +30,15 @@ jobs:
       uses: ruby/setup-ruby@473e4d8fe5dd94ee328fdfca9f8c9c7afc9dae5e
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        bundler-cache: false # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
-      run: cd /home/runner/work/TestingApiPokemon/TestingApiPokemon
+      run: bundle exec rake
       
     - name: cache gems
       uses: actions/cache@v2
       with:
-        path: vendor/bundle
+        path: /home/runner/work/TestingApiPokemon/TestingApiPokemon
         key: ${{ runner.os }}-gem-bundler-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
          ${{ runner.os }}-gem-bundler-3
+        run: bundle exec rake

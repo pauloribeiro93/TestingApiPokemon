@@ -33,3 +33,11 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
       run: cd /home/runner/work/TestingApiPokemon/TestingApiPokemon
+      
+    - name: cache gems
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-bundler-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+         ${{ runner.os }}-gem-bundler-3

@@ -41,4 +41,4 @@ jobs:
         key: ${{ runner.os }}-gem-bundler-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
          ${{ runner.os }}-gem-bundler-3
-        run: bundle install
+        run: exec bundle install

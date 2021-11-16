@@ -34,4 +34,5 @@ jobs:
         bundler-cache: false # runs 'bundle install' and caches installed gems automatically
     - name: Run tests
       run: bundle install
-      
+    - name: Run tests
+      run: rspec
